@@ -1,3 +1,4 @@
+from logging import _FormatStyle
 import pytorch_lightning as pl
 from torch.utils.data import random_split, DataLoader
 
@@ -69,7 +70,7 @@ class ClassifyDataModule(pl.LightningDataModule):
         
     def setup(self, stage: Optional[str] = None):
         self.classify_trainset = ClassifyDataset(self.data_dir, transforms=self.train_transform, train=True)
-        self.classify_validset = ClassifyDataset(self.data_dir, transforms=self.train_transform, train=True)
+        self.classify_validset = ClassifyDataset(self.data_dir, transforms=self.train_transform, train=False)
 
     def train_dataloader(self):
         return DataLoader(self.classify_trainset, batch_size=self.batch_size, num_workers=self.num_workers)

@@ -90,4 +90,4 @@ if __name__ == '__main__':
     mvn2 = MobileNetV2()
     batch = torch.rand(2,3,224,224)
     result = mvn2(batch)
-    print(result)
+    print(result.shape)
